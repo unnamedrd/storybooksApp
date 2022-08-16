@@ -8,4 +8,10 @@ dotenv.config({ path: "./config/config-env" });
 
 const app = express()
 
-app.listen()
+const PORT = process.env.PORT || 5000
+
+app.listen(
+    PORT, 
+    console.log(`Server is running on ${process.env.NODE_ENV} on ${PORT} betta go catch it`)
+)
+
