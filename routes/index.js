@@ -3,9 +3,10 @@ const router = express.Router()
 
 
 router.get('/', (req, res) => {
-    res.send('Login')
+    res.send('login', {
+        layout: 'login'
+    })
 })
-
 
 
 router.get("/dashboard", (req, res) => {

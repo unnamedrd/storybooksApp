@@ -1,14 +1,15 @@
+const path = require("path");
 const express = require("express");
-const path = require('path')
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const connectDB = require("./config/db");
 
+//load config
 dotenv.config({ path: "./config/config.env" });
 
 connectDB();
-
+//middleware
 const app = express();
 
 if (process.env.NODE_ENV === "development") {
@@ -23,14 +24,14 @@ app.engine(
     extname: ".hbs",
   })
 );
+
 app.set("view engine", ".hbs");
 
 //static folder
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, "public")));
 
 //routes
-
 app.use("/", require("./routes/index"));
 app.use("/dashboard", require("./routes/index"));
 
