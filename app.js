@@ -3,10 +3,15 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const exphbs = require("express-handlebars");
+const passport = require("./config/config.env")
+const session = require('express-session')
 const connectDB = require("./config/db");
 
 //load config
 dotenv.config({ path: "./config/config.env" });
+
+//passport config
+require('./config/passport.js'(passport))
 
 connectDB();
 //middleware
@@ -26,6 +31,19 @@ app.engine(
 );
 
 app.set("view engine", ".hbs");
+
+//sessions
+app.use(session({
+  secret: 'keyboard cat', 
+  resave: false, 
+  saveUninitialized: true, 
+  cookie: {secure : true}
+}))
+
+app.use(passport.initialize)
+app.use(passport.session())
+
+
 
 //static folder
 
