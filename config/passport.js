@@ -11,7 +11,13 @@ module.exports = function (passport) {
         callbackURL: '/auth/google/callback'
       },
         async (accessToken, refreshToken, profile, done) => {
-           console.log(profile)
+          const newUser = {
+            googleID: profile.id, 
+            displayName: profile.displayName, 
+            firstName: profile.name.givenName, 
+            lastName: profile.name.familyName, 
+            image: profile.photos[0].value
+           }
           }));
     
     passport.serializeUser(function (user, done) {
