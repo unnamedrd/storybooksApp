@@ -45,3 +45,6 @@ module.exports = function (passport) {
     });
   });
 };
+
+
+//check passport js file for bugs
