@@ -13,9 +13,9 @@ module.exports = function (passport) {
       async (accessToken, refreshToken, profile, done) => {
 
         console.log(profile)
-        /*
+        
         const newUser = {
-          googleID: profile.id,
+          googleId: profile.id,
           displayName: profile.displayName,
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
@@ -23,7 +23,7 @@ module.exports = function (passport) {
         }
 
         try {
-          let user = await User.findOne({ googleID: profile.id });
+          let user = await User.findOne({ googleId: profile.id });
 
           if (user) {
             done(null, user);
@@ -33,7 +33,7 @@ module.exports = function (passport) {
           }
         } catch (err) {
           console.error(err);
-        }*/
+        }
       }
     )
   );
